@@ -120,7 +120,7 @@ func (c *protoBinaryCodec) Unmarshal(data []byte, message any) error {
 	}
 	err := proto.Unmarshal(data, protoMessage)
 	if err != nil {
-		return fmt.Errorf("unmarshal into %T: %w", message, err)
+		return errors.New("unmarshal failed")
 	}
 	return nil
 }
@@ -180,7 +180,7 @@ func (c *protoJSONCodec) Unmarshal(binary []byte, message any) error {
 	options := protojson.UnmarshalOptions{DiscardUnknown: true}
 	err := options.Unmarshal(binary, protoMessage)
 	if err != nil {
-		return fmt.Errorf("unmarshal into %T: %w", message, err)
+		return errors.New("unmarshal failed")
 	}
 	return nil
 }
