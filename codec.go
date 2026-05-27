@@ -143,6 +143,16 @@ func (c *protoBinaryCodec) IsBinary() bool {
 	return true
 }
 
+// ProtoJSONCodec is public for downstream customization.
+type ProtoJSONCodec = protoJSONCodec
+
+// MakeProtoJSONCodec construct a [ProtoJSONCodec].
+func MakeProtoJSONCodec(name string) ProtoJSONCodec {
+	return ProtoJSONCodec{
+		name: name,
+	}
+}
+
 type protoJSONCodec struct {
 	name string
 }
